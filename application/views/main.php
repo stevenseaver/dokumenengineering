@@ -6,6 +6,7 @@
                     <td>Jenis Produk</td>
                     <td>Nama Produk</td>
                     <td>Dokumen Produk</td>
+                    <td>Status</td>
                 </tr>
             </thead>
             <tbody>
@@ -14,6 +15,15 @@
                         <td><?php echo $s['Jenis Produk'] ?></td>
                         <td><?php echo $s['Nama Produk'] ?></td>
                         <td><a href="<?= base_url()."Asset/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Dokumen Produk'].".pdf"?>" target = "_blank"><?php echo $s['Dokumen Produk'] ?></a></td>
+                        <td><?php 
+                            $fileName = "Asset/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Dokumen Produk'].".pdf";
+                            if(file_exists($fileName) == true){
+                                echo "OK";
+                            }
+                            else{
+                                echo "Not Available";
+                            }
+                        ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

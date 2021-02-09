@@ -6,20 +6,28 @@ class Page extends CI_Controller {
     public function __construct(){
         parent::__construct();
         $this->load->model('dokumen');
+        $this->load->model('analisis');
         $this->load->helper(array('form', 'url'));
     }
 
 	public function main(){
-        $data['title']= "Home"; 
+        $data['title'] = "Home"; 
         $data['viewData'] = $this->dokumen->load_data();
         $this->load->view('header', $data);
 		$this->load->view('main', $data);
     }
 
     public function upload(){
-        $data['title']= "Upload Revisi"; 
+        $data['title'] = "Upload Revisi"; 
         $this->load->view('header', $data);
         $this->load->view('upload',array('error'=>' '));
+    }
+
+    public function analisis(){
+        $data['title'] = "Analisis";
+        $data['viewData'] = $this->analisis->load_data2();  
+        $this->load->view('header', $data);
+        $this->load->view('analisis',$data);  
     }
 
     public function do_upload() {
