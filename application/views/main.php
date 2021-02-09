@@ -18,10 +18,10 @@
                         <td><?php 
                             $fileName = "Asset/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Dokumen Produk'].".pdf";
                             if(file_exists($fileName) == true){
-                                echo "OK";
+                                echo "<div class='alert alert-primary' style='margin-bottom:0px; padding:0px; text-align: center'>OK</div>";
                             }
                             else{
-                                echo "Not Available";
+                                echo "<div class='alert alert-danger' style='margin-bottom:0px; padding:0px; text-align: center'>Not Available</div>";
                             }
                         ?></td>
                     </tr>
@@ -38,8 +38,8 @@
         $(document).ready(function() {
             $('#example').DataTable({
                 lengthMenu: [
-                    [10, 23, 46, -1],
-                    [10, 23, 46, 'All']
+                    [19, 38, 50, -1],
+                    [19, 38, 50, 'All']
                 ]
             });
         });

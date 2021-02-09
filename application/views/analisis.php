@@ -15,9 +15,17 @@
                     <tr>
                         <td><?php echo $s['Jenis Produk'] ?></td>
                         <td><?php echo $s['Nama Produk'] ?></td>
-                        <td><?php echo $s['Jenis Analisis'] ?></td>
+                        <td><a href="/dokumenengineering/index.php/page/"><?php echo $s['Jenis Analisis']?></a></td>
                         <td>Coba</td>
-                        <td>Coba</td>
+                        <td><?php 
+                            $fileName = "Asset/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Jenis Analisis'].".pdf";
+                            if(file_exists($fileName) == true){
+                                echo "<div class='alert alert-primary' style='margin-bottom:0px; padding:0px; text-align: center'>OK</div>";
+                            }
+                            else{
+                                echo "<div class='alert alert-danger' style='margin-bottom:0px; padding:0px; text-align: center'>Not Available</div>";
+                            }
+                        ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

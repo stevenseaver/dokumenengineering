@@ -19,6 +19,8 @@ class Page extends CI_Controller {
 
     public function upload(){
         $data['title'] = "Upload Revisi"; 
+        $data['viewData'] = $this->dokumen->load_data();
+        $data['viewDataAnalisis'] = $this->analisis->load_data2();  
         $this->load->view('header', $data);
         $this->load->view('upload',array('error'=>' '));
     }
@@ -31,6 +33,7 @@ class Page extends CI_Controller {
     }
 
     public function do_upload() {
+
         $config['upload_path']          = './Asset/Uploads';
         $config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
@@ -49,5 +52,10 @@ class Page extends CI_Controller {
                 $this->load->view('header');
                 $this->load->view('upload_success', $data);
         }
+    }
+
+    public function test()
+    {
+        echo $this->load->post('select1');
     }
 }
