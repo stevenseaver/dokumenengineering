@@ -40,6 +40,7 @@ class Page extends CI_Controller {
         $config['allowed_types']        = 'pdf|mp4';
         $config['max_size']             = 10000;
         $config['file_name']            = "{$select3}";
+        $config['remove_spaces']        = FALSE;
 
         $this->load->library('upload', $config);
 
