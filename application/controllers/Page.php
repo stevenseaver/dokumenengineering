@@ -12,6 +12,7 @@ class Page extends CI_Controller {
 	public function main(){
         $data['title'] = "Home"; 
         $data['viewData'] = $this->dokumen->load_data();
+        $data['viewDataAnalisis'] = $this->dokumen->load_data2(); 
         $this->load->view('header', $data);
 		$this->load->view('main', $data);
     }
@@ -48,6 +49,9 @@ class Page extends CI_Controller {
             if (file_exists($config['upload_path'].$select3.".pdf"))
                 unlink($config['upload_path'].$select3.".pdf");
         }
+
+        if(!is_dir($config['upload_path']))
+            mkdir($config['upload_path'], 0777, TRUE);
             
         if ( ! $this->upload->do_upload('userfile'))
         {

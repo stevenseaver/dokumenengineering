@@ -1,14 +1,5 @@
 <!DOCTYPE html>
 <html>
-<style>
-  .verticalcenter{
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-  }
-</style>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
