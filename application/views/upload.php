@@ -1,9 +1,13 @@
    <div class="container-fluid">       
         <br>
         <div class="card">
-            <h5 class="card-header">Upload File</h5>
+            <h5 class="card-header">Unggah Dokumen Engineering</h5>
             <div class="card-body">
-                <p class="card-text">Unggah file berdasarkan jenis, nama, dan dokumen produk.</p> 
+                <!-- class/function -->
+                <?php echo form_open_multipart('page/do_upload');?> 
+
+                <p class="card-title" style="padding:0px; margin-bottom:15px;">Unggah file berdasarkan jenis, nama, dan dokumen produk.</p>
+                <p class="card-text" style="padding:0px; margin-bottom:0px;">Jenis Produk</p> 
                 <div class="col-xs-6">
                     <select class='form-control' name="select1" id=select1>
                         <?php 
@@ -13,7 +17,7 @@
                                 if ($before != $data['Jenis Produk'])
                                 {
                                     $temp = $data['Jenis Produk'];
-                                    echo "<option value=".$temp.">".$temp."</option>";
+                                    echo "<option value='{$temp}'>".$temp."</option>";
                                     $before = $temp;
                                 }
                             }
@@ -21,8 +25,10 @@
                     </select>
                 </div>
                 <br>
+                <p class="card-text" style="padding:0px; margin-bottom:0px;">Nama Produk</p> 
                 <div class="col-xs-6">
                     <select class="form-control" name="select2" id="select2">
+                        <option value="test string">test</option>
                         <?php 
                             $before = '';
                             foreach($viewData as $data)
@@ -31,7 +37,7 @@
                                 $temp2 = $data['Nama Produk'];
                                 if ($before != $temp2)
                                 {
-                                    echo "<option value=".$temp1.">".$temp2."</option>"; 
+                                    echo "<option value='{$temp2}' class=".$temp1.">".$temp2."</option>"; 
                                     $before = $temp2;
                                 }
                             }
@@ -39,43 +45,49 @@
                     </select>
                 </div>
                 <br>
+                <p class="card-text" style="padding:0px; margin-bottom:0px;">Dokumen Produk</p> 
                 <div class="col-xs-6">
                     <select class="form-control" name="select3" id="select3">
                         <?php 
                             $i = 0;
-                            $dropdownIndex3 = 1;
                             $dbLength = count($viewData);
                             $before = '';
                             while($i < 19)
                             {
-                                echo "<option value='$dropdownIndex3'>".$viewData[$i]['Dokumen Produk']."</option>";
+                                $temp = $viewData[$i]['Dokumen Produk'];
+                                echo "<option value='{$temp}'>".$temp."</option>";
                                 $before = $viewData[$i]['Dokumen Produk'];
                                 $i++;
-                                $dropdownIndex3++;
                             }
                             $j = 0;
                             $anLength = count($viewDataAnalisis);
                             $beforeAn = '';
                             while($j < 4)
                             {
-                                echo "<option value='$dropdownIndex3'>".$viewDataAnalisis[$j]['Jenis Analisis']."</option>";
+                                $temp = $viewDataAnalisis[$j]['Jenis Analisis'];
+                                echo "<option value='{$temp}'>".$temp."</option>";
                                 $beforeAn = $viewDataAnalisis[$j]['Jenis Analisis'];    
-                                $j++;  
-                                $dropdownIndex3++; 
+                                $j++;
                             }
                         ?>               
                     </select>
                 </div>
                 <br>
-
-                <?php echo $error;?>
-                <?php echo form_open_multipart('page/do_upload');?>  <!--class/function -->
-
+            
+                <!-- <div id="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <p style="padding:0px;"><?php //echo $error;?></p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div> -->
+                <div style="color:red;">
+                    <p><?php  echo $error?></p>
+                </div>
                 <input type="file" name="userfile" size="20" />
-
+            
                 <br /><br />
+                <input id="submit" type="submit" value="Upload"/>
 
-                <input type="submit" value="Upload"/>
                 </form>
             </div>
         </div>
@@ -90,9 +102,13 @@
         $options = $select2.find("option");
 
         $select1.on("change", function () {
-            $select2.html($options.filter('[value="' + this.value + '"]'));
+            $select2.html($options.filter('[class="' + this.value + '"]'));
         }).trigger("change");
 
+        // $('#alert').hide();
+        // $('#submit').click(function() {
+        //     $('#alert').show();
+        // });
     </script>
 </body>
 

@@ -6,7 +6,6 @@ class Page extends CI_Controller {
     public function __construct(){
         parent::__construct();
         $this->load->model('dokumen');
-        $this->load->model('analisis');
         $this->load->helper(array('form', 'url'));
     }
 
@@ -17,34 +16,47 @@ class Page extends CI_Controller {
 		$this->load->view('main', $data);
     }
 
-    public function upload(){
+    public function upload($error_msg = array('error'=>' ')){
         $data['title'] = "Upload Revisi"; 
         $data['viewData'] = $this->dokumen->load_data();
-        $data['viewDataAnalisis'] = $this->analisis->load_data2();  
+        $data['viewDataAnalisis'] = $this->dokumen->load_data2();  
         $this->load->view('header', $data);
-        $this->load->view('upload',array('error'=>' '));
+        $this->load->view('upload',$error_msg);
     }
 
     public function analisis(){
         $data['title'] = "Analisis";
-        $data['viewData'] = $this->analisis->load_data2();  
+        $data['viewData'] = $this->dokumen->load_data2();  
         $this->load->view('header', $data);
         $this->load->view('analisis',$data);  
     }
 
     public function do_upload() {
+        $select1 = $this->input->post('select1');
+        $select2 = $this->input->post('select2');
+        $select3 = $this->input->post('select3');
 
-        $config['upload_path']          = './Asset/Uploads';
-        $config['allowed_types']        = 'pdf';
+        $config['upload_path']          = "./Asset/{$select1}/{$select2}/";
+        $config['allowed_types']        = 'pdf|mp4';
         $config['max_size']             = 10000;
+        $config['file_name']            = "{$select3}";
 
         $this->load->library('upload', $config);
 
+        if ($select3!='Analisis Breakdown' and $select3!='Analisis Kerusakan' and $select3!='Analisis Pengujian' and $select3!='Analisis Standar'){
+            if (file_exists($config['upload_path'].$select3.".pdf"))
+                unlink($config['upload_path'].$select3.".pdf");
+        }
+            
         if ( ! $this->upload->do_upload('userfile'))
         {
                 $error = array('error' => $this->upload->display_errors());
-                $this->load->view('header');
-                $this->load->view('upload', $error);
+                $data['title'] = "Upload Revisi"; 
+                $data['viewData'] = $this->dokumen->load_data();
+                $data['viewDataAnalisis'] = $this->dokumen->load_data2();  
+                $this->load->view('header', $data);
+                $this->load->view('upload',$error);
+
         }
         else
         {
@@ -52,10 +64,5 @@ class Page extends CI_Controller {
                 $this->load->view('header');
                 $this->load->view('upload_success', $data);
         }
-    }
-
-    public function test()
-    {
-        echo $this->load->post('select1');
     }
 }
