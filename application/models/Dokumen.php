@@ -14,4 +14,9 @@ class Dokumen extends CI_Model {
         $query = $this->db->get('analisis');
         return $query->result_array();
     }
+
+    public function load_datarevisi(){
+        $query = $this->db->get('dokumenrevisi');
+        return $query->result_array();
+    }
 }

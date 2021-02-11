@@ -22,22 +22,22 @@
             <a class="nav-link" href="/dokumenengineering/index.php/page/main">Beranda<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/dokumenengineering/index.php/page/upload">Upload Dokumen</a>
+          </li> 
+          <li class="nav-item">
             <a class="nav-link" href="/dokumenengineering/index.php/page/analisis">Analisis</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/dokumenengineering/index.php/page/upload">Upload Revisi</a>
-          </li>
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Revisi
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="/dokumenengineering/index.php/page/uploadrevisi">Upload Revisi</a>
+              <a class="dropdown-item" href="/dokumenengineering/index.php/page/dokumenrevisi">Dokumen Revisi</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="/dokumenengineering/index.php/page/">Super User</a>
             </div>
-          </li> -->
+          </li>
         </ul>
       </div>
     

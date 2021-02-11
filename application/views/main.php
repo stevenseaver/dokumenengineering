@@ -78,9 +78,9 @@
                     <tr>
                         <td><?php echo $s['Jenis Produk'] ?></td>
                         <td><?php echo $s['Nama Produk'] ?></td>
-                        <td><a href="<?= base_url()."Asset/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Dokumen Produk'].".pdf"?>" target = "_blank"><?php echo $s['Dokumen Produk'] ?></a></td>
+                        <td><a href="<?= base_url()."Asset/Live/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Dokumen Produk'].".pdf"?>" target = "_blank"><?php echo $s['Dokumen Produk'] ?></a></td>
                         <td><?php 
-                            $fileName = "Asset/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Dokumen Produk'].".pdf";
+                            $fileName = "Asset/Live/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Dokumen Produk'].".pdf";
                             if(file_exists($fileName) == true){
                                 echo "<div class='alert alert-success' style='margin-bottom:0px; padding:0px; text-align: center'>OK</div>";
                             }
