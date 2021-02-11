@@ -30,14 +30,15 @@ class Page extends CI_Controller {
         $select2 = $this->input->post('select2');
         $select3 = $this->input->post('select3');
 
-        $config['upload_path']    = "./Asset/Live/{$select1}/{$select2}/";
         $config['allowed_types']  = 'pdf|mp4|jpg|png';
         $config['max_size']       = 10000;
         if ($select3!='Analisis Breakdown' and $select3!='Analisis Kerusakan' and $select3!='Analisis Pengujian' and $select3!='Analisis Standar'){
+            $config['upload_path']    = "./Asset/Live/{$select1}/{$select2}/";
             $config['file_name']  = "{$select3}";
             $config['overwrite']  = TRUE;
         }
         else{
+            $config['upload_path']    = "./Asset/Analisis/{$select1}/{$select2}/";
             $config['file_name']  = "{$select3}"."_".date("Ymd_His");
             $config['overwrite']  = FALSE;
         }
@@ -79,14 +80,15 @@ class Page extends CI_Controller {
         $select2 = $this->input->post('select2');
         $select3 = $this->input->post('select3');
 
-        $config['upload_path']    = "./Asset/revisi/{$select1}/{$select2}/";
         $config['allowed_types']  = 'docx|xlsx|jpg|png|mp4|pptx';
         $config['max_size']       = 100000;
         if ($select3!='Analisis Breakdown' and $select3!='Analisis Kerusakan' and $select3!='Analisis Pengujian' and $select3!='Analisis Standar'){
+            $config['upload_path']    = "./Asset/Revisi/{$select1}/{$select2}/";
             $config['file_name']  = "{$select3}";
             $config['overwrite']  = TRUE;
         }
         else{
+            $config['upload_path']    = "./Asset/Analisis/{$select1}/{$select2}/";
             $config['file_name']  = "{$select3}"."_".date("Ymd_His");
             $config['overwrite']  = FALSE;
         }

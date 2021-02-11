@@ -1,6 +1,16 @@
     <div class="container mb-3 mt-3 fadeInDown second">
         <h3>Analisis</h3> 
-        <h4>Ups you found 404 page!</h4>
+    
+        <?php
+            $flag1 = $this->load->input->post('flag1');
+            $flag2 = $this->load->input->post('flag2');
+            //$dir    = "Asset/Analisis/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Jenis Analisis'].".pdf";
+            $dir    = "./Asset/Analisis/{$flag1}/{$flag2}";
+            $files1 = scandir($dir);
+
+            print_r($files1);
+        ?>
+        
         <!-- <table id="example" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
@@ -19,7 +29,7 @@
                         <td><a href="/dokumenengineering/index.php/page/analisis_view"><?php echo $s['Jenis Analisis']?></a></td>
                         <td></td>
                         <td><?php 
-                            $fileName = "Asset/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Jenis Analisis'].".pdf";
+                            $fileName = "Asset/Analisis/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Jenis Analisis'].".pdf";
                             if(file_exists($fileName) == true){
                                 echo "<div class='alert alert-success' style='margin-bottom:0px; padding:0px; text-align: center'>OK</div>";
                             }

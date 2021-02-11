@@ -15,10 +15,10 @@
                     <tr>
                         <td><?php echo $s['Jenis Produk'] ?></td>
                         <td><?php echo $s['Nama Produk'] ?></td>
-                        <td><a href="/dokumenengineering/index.php/page/analisis_view"><?php echo $s['Jenis Analisis']?></a></td>
+                        <td><a href="/dokumenengineering/index.php/page/analisis_view"><?php echo $s['Jenis Analisis'];?></a></td>
                         <td></td>
                         <td><?php 
-                            $fileName = "Asset/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Jenis Analisis'].".pdf";
+                            $fileName = "Asset/Analisis/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Jenis Analisis'].".pdf";
                             if(file_exists($fileName) == true){
                                 echo "<div class='alert alert-success' style='margin-bottom:0px; padding:0px; text-align: center'>OK</div>";
                             }
