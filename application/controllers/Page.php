@@ -32,23 +32,37 @@ class Page extends CI_Controller {
         $this->load->view('analisis',$data);  
     }
 
+    public function analisis_view(){
+        $data['title'] = "Analisis";
+        $data['viewData'] = $this->dokumen->load_data2();  
+        $this->load->view('header', $data);
+        $this->load->view('analisis_view',$data);  
+    }
+
     public function do_upload() {
         $select1 = $this->input->post('select1');
         $select2 = $this->input->post('select2');
         $select3 = $this->input->post('select3');
 
-        $config['upload_path']          = "./Asset/{$select1}/{$select2}/";
-        $config['allowed_types']        = 'pdf|mp4';
-        $config['max_size']             = 10000;
-        $config['file_name']            = "{$select3}";
-        $config['remove_spaces']        = FALSE;
+        $config['upload_path']    = "./Asset/{$select1}/{$select2}/";
+        $config['allowed_types']  = 'pdf|mp4';
+        $config['max_size']       = 10000;
+        if ($select3!='Analisis Breakdown' and $select3!='Analisis Kerusakan' and $select3!='Analisis Pengujian' and $select3!='Analisis Standar'){
+            $config['file_name']  = "{$select3}";
+            $config['overwrite']  = TRUE;
+        }
+        else{
+            $config['file_name']  = "{$select3}"."_".date("Ymd_His");//"{$select3}";
+            $config['overwrite']  = FALSE;
+        }
+        $config['remove_spaces']  = FALSE;
 
         $this->load->library('upload', $config);
 
-        if ($select3!='Analisis Breakdown' and $select3!='Analisis Kerusakan' and $select3!='Analisis Pengujian' and $select3!='Analisis Standar'){
-            if (file_exists($config['upload_path'].$select3.".pdf"))
-                unlink($config['upload_path'].$select3.".pdf");
-        }
+        // if ($select3!='Analisis Breakdown' and $select3!='Analisis Kerusakan' and $select3!='Analisis Pengujian' and $select3!='Analisis Standar'){
+        //     if (file_exists($config['upload_path'].$select3.".pdf"))
+        //         unlink($config['upload_path'].$select3.".pdf");
+        // }
 
         if(!is_dir($config['upload_path']))
             mkdir($config['upload_path'], 0777, TRUE);

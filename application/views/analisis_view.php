@@ -1,6 +1,7 @@
     <div class="container mb-3 mt-3 fadeInDown second">
-        <h3> Analisis Produk </h3> 
-        <table id="example" class="table table-striped" style="width:100%">
+        <h3>Analisis</h3> 
+        <h4>Ups you found 404 page!</h4>
+        <!-- <table id="example" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
                     <td>Jenis Produk</td>
@@ -13,7 +14,7 @@
             <tbody>
                 <?php foreach ($viewData as $s) : ?>
                     <tr>
-                        <td><?php echo $s['Jenis Produk'] ?></td>
+                        <td><?//php echo $s['Jenis Produk'] ?></td>
                         <td><?php echo $s['Nama Produk'] ?></td>
                         <td><a href="/dokumenengineering/index.php/page/analisis_view"><?php echo $s['Jenis Analisis']?></a></td>
                         <td></td>
@@ -29,7 +30,7 @@
                     </tr>
                 <?php endforeach; ?>
             </tbody>
-        </table>
+        </table> -->
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>

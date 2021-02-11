@@ -9,7 +9,7 @@
                 <p class="card-title" style="padding:0px; margin-bottom:15px;">Unggah file berdasarkan jenis, nama, dan dokumen produk.</p>
                 <p class="card-text" style="padding:0px; margin-bottom:0px;">Jenis Produk</p> 
                 <div class="col-xs-6">
-                    <select class='form-control' name="select1" id="select1">
+                    <select class='form-control' name="select1" id=select1>
                         <?php 
                             $before = '';
                             foreach($viewData as $data){
@@ -25,14 +25,14 @@
                 <br>
                 <p class="card-text" style="padding:0px; margin-bottom:0px;">Nama Produk</p> 
                 <div class="col-xs-6">
-                    <select class="form-control" name="select2" id="select2">
+                    <select class="form-control" name="select2" id=select2>
                         <?php 
                             $before = '';
                             foreach($viewData as $data){
                                 $temp1 = $data['Jenis Produk'];
                                 $temp2 = $data['Nama Produk'];
                                 if ($before != $temp2){
-                                    echo "<option value='{$temp2}' class=".$temp1.">".$temp2."</option>"; 
+                                    echo "<option value='{$temp2}' class='{$temp1}'>".$temp2."</option>"; 
                                     $before = $temp2;
                                 }
                             }
@@ -42,7 +42,7 @@
                 <br>
                 <p class="card-text" style="padding:0px; margin-bottom:0px;">Dokumen Produk</p> 
                 <div class="col-xs-6">
-                    <select class="form-control" name="select3" id="select3">
+                    <select class="form-control" name="select3" id=select3>
                         <?php 
                             $i = 0;
                             while($i < 19){

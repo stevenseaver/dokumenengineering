@@ -31,7 +31,7 @@
                                 $temp1 = $data['Jenis Produk'];
                                 $temp2 = $data['Nama Produk'];
                                 if ($before != $temp2){
-                                    echo "<option value='{$temp2}' class=".$temp1.">".$temp2."</option>"; 
+                                    echo "<option value='{$temp2}' class='{$temp1}'>".$temp2."</option>"; 
                                     $before = $temp2;
                                 }
                             }
