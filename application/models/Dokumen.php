@@ -15,8 +15,22 @@ class Dokumen extends CI_Model {
         return $query->result_array();
     }
 
+    public function get_analisis_id($id){
+        $query = $this->db->get_where('analisis', array('Id' => $id));
+        return $query->row_array();
+    }
+
     public function load_datarevisi(){
         $query = $this->db->get('dokumenrevisi');
         return $query->result_array();
+    }
+
+    public function upload_analisis(){
+        $keterangan = $this->intput->post('keterabgan');
+        $data = array (
+            'keterangan'=>$keterangan;
+        );
+
+        $this->db->insert('analisisview',$data);
     }
 }

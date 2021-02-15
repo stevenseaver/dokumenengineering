@@ -19,21 +19,27 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/dokumenengineering/index.php/page/main">Beranda<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/dokumenengineering/index.php/page/main">Dokumen Kontrol<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/dokumenengineering/index.php/page/upload">Upload Dokumen</a>
+            <a class="nav-link" href="/dokumenengineering/index.php/page/upload">Upload Dokumen Kontrol </a>
           </li> 
-          <li class="nav-item">
-            <a class="nav-link" href="/dokumenengineering/index.php/page/analisis">Analisis</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Analisis
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/dokumenengineering/index.php/page/analisis">Dokumen Analisis</a>
+              <a class="dropdown-item" href="/dokumenengineering/index.php/page/uploadanalisis">Upload Analisis</a>
+            </div>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Revisi
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/dokumenengineering/index.php/page/uploadrevisi">Upload Revisi</a>
               <a class="dropdown-item" href="/dokumenengineering/index.php/page/dokumenrevisi">Dokumen Revisi</a>
+              <a class="dropdown-item" href="/dokumenengineering/index.php/page/uploadrevisi">Upload Revisi</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="/dokumenengineering/index.php/page/">Super User</a>
             </div>

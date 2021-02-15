@@ -1,10 +1,10 @@
 <div class="container-fluid">       
         <br>
         <div class="card">
-            <h5 class="card-header">Unggah Revisi Dokumen Engineering</h5>
+            <h5 class="card-header">Unggah Dokumen Analisis</h5>
             <div class="card-body">
                 <!-- class/function -->
-                <?php echo form_open_multipart('page/do_upload_revisi');?> 
+                <?php echo form_open_multipart('page/do_upload_analisis');?> 
 
                 <p class="card-title" style="padding:0px; margin-bottom:15px;">Unggah file berdasarkan jenis, nama, dan dokumen produk.</p>
                 <p class="card-text" style="padding:0px; margin-bottom:0px;">Jenis Produk</p> 
@@ -44,17 +44,21 @@
                 <div class="col-xs-6">
                     <select class="form-control" name="select3" id=select3>
                         <?php 
-                            $i = 0;
-                            while($i < 19){
-                                $temp = $viewData[$i]['Dokumen Produk'];
+                            $j = 0;
+                            while($j < 4){
+                                $temp = $viewDataAnalisis[$j]['Jenis Analisis'];
                                 echo "<option value='{$temp}'>".$temp."</option>";
-                                $i++;
+                                $j++;
                             }
                         ?>               
                     </select>
                 </div>
                 <br>
-            
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Keterangan</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Isikan keyword analisis singkat agar memudahkan pencarian!">
+                </div>
+
                 <div style="color:red;">
                     <p><?php  echo $error?></p>
                 </div>

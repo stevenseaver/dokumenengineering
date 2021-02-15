@@ -2,45 +2,40 @@
         <h3>Analisis</h3> 
     
         <?php
-            $flag1 = $this->load->input->post('flag1');
-            $flag2 = $this->load->input->post('flag2');
-            //$dir    = "Asset/Analisis/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Jenis Analisis'].".pdf";
-            $dir    = "./Asset/Analisis/{$flag1}/{$flag2}";
-            $files1 = scandir($dir);
+            echo "<h5> {$viewData['Jenis Produk']}"." "."{$viewData['Nama Produk']}"." "."{$viewData['Jenis Analisis']} </h5>";
+            $dir    = "Asset/Analisis/{$viewData['Jenis Produk']}/{$viewData['Nama Produk']}/{$viewData['Jenis Analisis']}/";
+            if(!is_dir($dir))
+                mkdir($dir, 0777, TRUE);
 
-            print_r($files1);
+            $fileInside = scandir($dir);
+            // echo "<br>";
+            // print_r($fileInside);
         ?>
         
-        <!-- <table id="example" class="table table-striped" style="width:100%">
+        <table id="example" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
-                    <td>Jenis Produk</td>
-                    <td>Nama Produk</td>
-                    <td>Jenis Analisis</td>
+                    <td>Dokumen Analisis</td>
                     <td>Tanggal</td>
-                    <td>Status</td>
+                    <td>Remarks</td>
+                    <td>Lihat</td>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($viewData as $s) : ?>
+                <?php 
+                    $len = count($fileInside);
+                    for ($i = 2; $i < $len; $i++) : ?>
                     <tr>
-                        <td><?//php echo $s['Jenis Produk'] ?></td>
-                        <td><?php echo $s['Nama Produk'] ?></td>
-                        <td><a href="/dokumenengineering/index.php/page/analisis_view"><?php echo $s['Jenis Analisis']?></a></td>
-                        <td></td>
-                        <td><?php 
-                            $fileName = "Asset/Analisis/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Jenis Analisis'].".pdf";
-                            if(file_exists($fileName) == true){
-                                echo "<div class='alert alert-success' style='margin-bottom:0px; padding:0px; text-align: center'>OK</div>";
-                            }
-                            else{
-                                echo "<div class='alert alert-danger' style='margin-bottom:0px; padding:0px; text-align: center'>Not Available</div>";
-                            }
+                        <td><?php  
+                            echo $fileInside[$i];
                         ?></td>
+                        <td>Tanggal</td>
+                        <td>Remarks</td>
+                        <td><a href="<?= base_url().$dir."{$fileInside[$i]}"?>"target = "_blank"><?php echo "{$fileInside[$i]}"?></a></td>
                     </tr>
-                <?php endforeach; ?>
+                <?php endfor; ?>
             </tbody>
-        </table> -->
+        </table>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>

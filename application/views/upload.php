@@ -50,12 +50,6 @@
                                 echo "<option value='{$temp}'>".$temp."</option>";
                                 $i++;
                             }
-                            $j = 0;
-                            while($j < 4){
-                                $temp = $viewDataAnalisis[$j]['Jenis Analisis'];
-                                echo "<option value='{$temp}'>".$temp."</option>";
-                                $j++;
-                            }
                         ?>               
                     </select>
                 </div>
@@ -91,11 +85,6 @@
         $select1.on("change", function () {
             $select2.html($options.filter('[class="' + this.value + '"]'));
         }).trigger("change");
-
-        // $('#alert').hide();
-        // $('#submit').click(function() {
-        //     $('#alert').show();
-        // });
     </script>
 </body>
 

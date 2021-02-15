@@ -1,7 +1,7 @@
     <div class="container mb-3 mt-3 fadeInDown second">
         <h3> Cari Dokumen Produk </h3> 
         <br>
-        <div class="card">
+        <!-- <div class="card">
             <h5 class="card-header">Filter Pencarian</h5>
             <div class="card-body">
                 <p class="card-text">Gunakan filter otomatis untuk pencarian lebih mudah (belum bisa!!)</p>
@@ -59,7 +59,7 @@
                     </select>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- <?php
             //echo $jenis;
         ?> -->
