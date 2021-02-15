@@ -25,12 +25,10 @@ class Dokumen extends CI_Model {
         return $query->result_array();
     }
 
-    public function upload_analisis(){
-        $keterangan = $this->intput->post('keterabgan');
-        $data = array (
-            'keterangan'=>$keterangan;
-        );
+    // public function upload_analisis($data){
+    //     $keterangan = $this->input->post('keteranganInput');
+    //     $data = array ('keterangan'=>$keterangan);
 
-        $this->db->insert('analisisview',$data);
-    }
+    //     $this->db->insert('analisisview',$data);
+    // }
 }

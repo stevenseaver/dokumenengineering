@@ -1,8 +1,8 @@
     <div class="container mb-3 mt-3 fadeInDown second">
-        <h3>Analisis</h3> 
+        <h3>Dokumen Analisis</h3> 
     
-        <?php
-            echo "<h5> {$viewData['Jenis Produk']}"." "."{$viewData['Nama Produk']}"." "."{$viewData['Jenis Analisis']} </h5>";
+        <?php 
+            echo "<h5> {$viewData['Jenis Analisis']}"." "."{$viewData['Nama Produk']}</h5>";
             $dir    = "Asset/Analisis/{$viewData['Jenis Produk']}/{$viewData['Nama Produk']}/{$viewData['Jenis Analisis']}/";
             if(!is_dir($dir))
                 mkdir($dir, 0777, TRUE);

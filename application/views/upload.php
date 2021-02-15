@@ -1,7 +1,7 @@
    <div class="container-fluid">       
         <br>
         <div class="card">
-            <h5 class="card-header">Unggah Dokumen Engineering</h5>
+            <h5 class="card-header">Unggah Dokumen Kontrol</h5>
             <div class="card-body">
                 <!-- class/function -->
                 <?php echo form_open_multipart('page/do_upload');?> 

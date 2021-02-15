@@ -55,8 +55,8 @@
                 </div>
                 <br>
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Keterangan</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Isikan keyword analisis singkat agar memudahkan pencarian!">
+                    <label for="keteranganInput">Keterangan</label>
+                    <input type="text" class="form-control" id="keteranganInput" placeholder="Isikan keyword analisis singkat agar memudahkan pencarian!">
                 </div>
 
                 <div style="color:red;">

@@ -106,7 +106,6 @@ class Page extends CI_Controller {
                 $data['viewDataAnalisis'] = $this->dokumen->load_data2();  
                 $this->load->view('header', $data);
                 $this->load->view('uploadrevisi',$error);
-
         }
         else
         {
@@ -147,40 +146,37 @@ class Page extends CI_Controller {
     }
 
     public function do_upload_analisis() { //UNTUK UPLOAD DOKUMEN ANALISIS {LIBRARY DR CI}
-    $select1 = $this->input->post('select1');
-    $select2 = $this->input->post('select2');
-    $select3 = $this->input->post('select3');
+        $select1 = $this->input->post('select1');
+        $select2 = $this->input->post('select2');
+        $select3 = $this->input->post('select3');
 
-    $config['allowed_types']  = 'pdf';
-    $config['max_size']       = 100000;
-    $config['upload_path']    = "./Asset/Analisis/{$select1}/{$select2}/{$select3}";
-    $config['file_name']  = "{$select3}"."_".date("Ymd_His");
-    $config['overwrite']  = FALSE;
-    $config['remove_spaces']  = FALSE;
+        $config['allowed_types']  = 'pdf';
+        $config['max_size']       = 100000;
+        $config['upload_path']    = "./Asset/Analisis/{$select1}/{$select2}/{$select3}";
+        $config['file_name']  = "{$select3}"."_".date("Ymd_His");
+        $config['overwrite']  = FALSE;
+        $config['remove_spaces']  = FALSE;
 
-    $this->load->library('upload', $config);
+        $this->load->library('upload', $config);
 
-    if(!is_dir($config['upload_path']))
-        mkdir($config['upload_path'], 0777, TRUE);
-        
-    if ( ! $this->upload->do_upload('userfile'))
-    {
-            $error = array('error' => $this->upload->display_errors());
-            $data['title'] = "Upload Revisi"; 
-            $data['viewData'] = $this->dokumen->load_data();
-            $data['viewDataAnalisis'] = $this->dokumen->load_data2();  
-            $this->load->view('header', $data);
-            $this->load->view('uploadanalisis',$error);
-
+        if(!is_dir($config['upload_path']))
+            mkdir($config['upload_path'], 0777, TRUE);
+            
+        if ( ! $this->upload->do_upload('userfile'))
+        {
+                $error = array('error' => $this->upload->display_errors());
+                $data['title'] = "Upload Revisi"; 
+                $data['viewData'] = $this->dokumen->load_data();
+                $data['viewDataAnalisis'] = $this->dokumen->load_data2();  
+                $this->load->view('header', $data);
+                $this->load->view('uploadanalisis',$error);
+        }
+        else
+        {
+                $data = array('upload_data' => $this->upload->data());
+                $this->load->view('header');
+                $this->load->view('upload_success', $data);
+        }
+        //$this->dokumen->upload_analisis($data);
     }
-    else
-    {
-            $data = array('upload_data' => $this->upload->data());
-            $this->load->view('header');
-            $this->load->view('upload_success', $data);
-    }
-
-    $this->dokumen->upload_analisis($data);
-}
-
 }
