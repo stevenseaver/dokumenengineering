@@ -85,7 +85,7 @@
                                 echo "<div class='alert alert-success' style='margin-bottom:0px; padding:0px; text-align: center'>OK</div>";
                             }
                             else{
-                                echo "<div class='alert alert-danger' style='margin-bottom:0px; padding:0px; text-align: center'>Not Available</div>";
+                                echo "<div class='alert alert-danger' style='margin-bottom:0px; padding:0px; text-align: center'>Tidak Tersedia</div>";
                             }
                         ?></td>
                     </tr>

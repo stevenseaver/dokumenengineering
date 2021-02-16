@@ -20,10 +20,10 @@
                         <td><?php 
                             $fileName = "Asset/Revisi/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Dokumen Produk']."_".$s['Nama Produk'].".".$s['Format Dokumen'];
                             if(file_exists($fileName) == true){
-                                echo "<div class='alert alert-primary' style='margin-bottom:0px; padding:0px; text-align: center'>OK</div>";
+                                echo "<div class='alert alert-primary' style='margin-bottom:0px; padding:0px; text-align: center'>Tunggu ACC</div>";
                             }
                             else{
-                                echo "<div class='alert alert-danger' style='margin-bottom:0px; padding:0px; text-align: center'>Not Available</div>";
+                                echo "<div class='alert alert-danger' style='margin-bottom:0px; padding:0px; text-align: center'>Tidak Tersedia</div>";
                             }
                         ?></td>
                         <td>ACC/TIDAK</td>

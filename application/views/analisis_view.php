@@ -52,7 +52,10 @@
                                 }
                             ?>
                         </td>
-                        <td><a href="<?= base_url().$dir."{$fileInside[$i]}"?>"target = "_blank">Buka</a></td>
+                        <td>
+                            <a class="badge badge-success" href="<?= base_url().$dir."{$fileInside[$i]}"?>"target = "_blank">Buka</a>
+                            <a class="badge badge-danger" href=".dokumenengineering/application/controllers/page/delete_analisis" name="deleteButton">Hapus</a>
+                        </td>
                     </tr>
                 <?php endfor; ?>
             </tbody>

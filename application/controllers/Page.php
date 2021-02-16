@@ -171,4 +171,8 @@ class Page extends CI_Controller {
 
         $this->dokumen->update_analisisview($select1, $select2, $select3, $keterangan, $tanggal, $file);
     }
+
+    public function delete_analisis(){
+        echo hello;
+    }
 }
