@@ -81,16 +81,9 @@ class Page extends CI_Controller {
 
         $config['allowed_types']  = 'docx|xlsx|jpg|png|mp4|pptx';
         $config['max_size']       = 100000;
-        // if ($select3!='Analisis Breakdown' and $select3!='Analisis Kerusakan' and $select3!='Analisis Pengujian' and $select3!='Analisis Standar'){
-            $config['upload_path']    = "./Asset/Revisi/{$select1}/{$select2}/ ";
-            $config['file_name']  = "{$select3}";
-            $config['overwrite']  = TRUE;
-        // }
-        // // else{
-        // //     $config['upload_path']    = "./Asset/Analisis/{$select1}/{$select2}/{$select3}";
-        // //     $config['file_name']  = "{$select3}"."_".date("Ymd_His");
-        // //     $config['overwrite']  = FALSE;
-        // // }
+        $config['upload_path']    = "./Asset/Revisi/{$select1}/{$select2}/";
+        $config['file_name']  = "{$select3}";
+        $config['overwrite']  = TRUE;
         $config['remove_spaces']  = FALSE;
 
         $this->load->library('upload', $config);
@@ -111,7 +104,7 @@ class Page extends CI_Controller {
         {
                 $data = array('upload_data' => $this->upload->data());
                 $this->load->view('header');
-                $this->load->view('upload_success', $data);
+                $this->load->view('uploadrevisi_success', $data);
         }
     }
 
@@ -125,6 +118,7 @@ class Page extends CI_Controller {
     public function analisis_view($id){  //UNTUK LOAD PAGE ANALISIS YANG ISINYA LIST DOKUMEN ANALISIS YANG ADA PER DOKUMEN
         $data['title'] = "Daftar Analisis";
         $data['viewData'] = $this->dokumen->get_analisis_id($id);  
+        $data['viewListAnalisis'] = $this->dokumen->load_analisisview();
         $this->load->view('header', $data);
         $this->load->view('analisis_view',$data);  
     }
@@ -153,7 +147,7 @@ class Page extends CI_Controller {
         $config['allowed_types']  = 'pdf';
         $config['max_size']       = 100000;
         $config['upload_path']    = "./Asset/Analisis/{$select1}/{$select2}/{$select3}";
-        $config['file_name']  = "{$select3}"."_".date("Ymd_His");
+        $config['file_name']  = "{$select3}"."_"."{$select2}"."_".date("Ymd_His");
         $config['overwrite']  = FALSE;
         $config['remove_spaces']  = FALSE;
 
@@ -175,8 +169,13 @@ class Page extends CI_Controller {
         {
                 $data = array('upload_data' => $this->upload->data());
                 $this->load->view('header');
-                $this->load->view('upload_success', $data);
+                $this->load->view('uploadanalisis_success', $data);
         }
         //$this->dokumen->upload_analisis($data);
+
+        $keterangan = $this->input->post('keterangan');
+        $file = $config['file_name'];
+
+        $this->dokumen->update_analisisview($select1, $select2, $select3, $keterangan, $file);
     }
 }

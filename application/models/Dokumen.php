@@ -25,10 +25,21 @@ class Dokumen extends CI_Model {
         return $query->result_array();
     }
 
-    // public function upload_analisis($data){
-    //     $keterangan = $this->input->post('keteranganInput');
-    //     $data = array ('keterangan'=>$keterangan);
+    public function load_analisisview(){
+        $query = $this->db->get('analisisview');
+        return $query->result_array();
+    }
 
-    //     $this->db->insert('analisisview',$data);
-    // }
+    public function update_analisisview($select1, $select2, $select3, $keterangan, $file)
+    {
+        $query = $this->db->get_where('analisis', array('Jenis_Produk'=>$select1, 'Nama_Produk'=>$select2, 'Jenis_Analisis'=>$select3));
+        $temp = $query->row_array();
+        $data = array(
+            'Id' => $temp['Id'],
+            'Keterangan' => $keterangan,
+            'Nama_File' => $file
+        );
+
+        $this->db->replace('analisisview', $data);
+    }
 }

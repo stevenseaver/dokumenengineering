@@ -46,7 +46,7 @@
                         <?php 
                             $j = 0;
                             while($j < 4){
-                                $temp = $viewDataAnalisis[$j]['Jenis Analisis'];
+                                $temp = $viewDataAnalisis[$j]['Jenis_Analisis'];
                                 echo "<option value='{$temp}'>".$temp."</option>";
                                 $j++;
                             }
@@ -56,7 +56,7 @@
                 <br>
                 <div class="form-group">
                     <label for="keteranganInput">Keterangan</label>
-                    <input type="text" class="form-control" id="keteranganInput" placeholder="Isikan keyword analisis singkat agar memudahkan pencarian!">
+                    <input type="text" name="keterangan" class="form-control" placeholder="Isikan keyword analisis singkat agar memudahkan pencarian!">
                 </div>
 
                 <div style="color:red;">

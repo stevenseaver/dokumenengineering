@@ -11,9 +11,9 @@
             <tbody>
                 <?php foreach ($viewData as $s) : ?>
                     <tr>
-                        <td><?php echo $s['Jenis Produk'] ?></td>
-                        <td><?php echo $s['Nama Produk'] ?></td>
-                        <td><a href="/dokumenengineering/index.php/page/analisis_view/<?= $s['Id'] ?>"><?php echo $s['Jenis Analisis'];?></a></td>
+                        <td><?php echo $s['Jenis_Produk'] ?></td>
+                        <td><?php echo $s['Nama_Produk'] ?></td>
+                        <td><a href="/dokumenengineering/index.php/page/analisis_view/<?= $s['Id'] ?>"><?php echo $s['Jenis_Analisis'];?></a></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

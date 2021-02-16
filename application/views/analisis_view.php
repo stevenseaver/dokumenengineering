@@ -2,23 +2,24 @@
         <h3>Dokumen Analisis</h3> 
     
         <?php 
-            echo "<h5> {$viewData['Jenis Analisis']}"." "."{$viewData['Nama Produk']}</h5>";
-            $dir    = "Asset/Analisis/{$viewData['Jenis Produk']}/{$viewData['Nama Produk']}/{$viewData['Jenis Analisis']}/";
+            echo "<h5> {$viewData['Jenis_Analisis']}"." "."{$viewData['Nama_Produk']}</h5>";
+            $dir    = "Asset/Analisis/{$viewData['Jenis_Produk']}/{$viewData['Nama_Produk']}/{$viewData['Jenis_Analisis']}/";
             if(!is_dir($dir))
                 mkdir($dir, 0777, TRUE);
 
             $fileInside = scandir($dir);
-            // echo "<br>";
-            // print_r($fileInside);
+            foreach ($viewListAnalisis as $dat)
         ?>
+
+        <a href="/dokumenengineering/index.php/page/analisis" type="button" class="btn btn-secondary" style="position:absolute; left:1430px; right:50; top:100px">Kembali</a>
         
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
                     <td>Dokumen Analisis</td>
                     <td>Tanggal</td>
-                    <td>Remarks</td>
-                    <td>Lihat</td>
+                    <td>Keterangan</td>
+                    <td>Aksi</td>
                 </tr>
             </thead>
             <tbody>
@@ -30,8 +31,17 @@
                             echo $fileInside[$i];
                         ?></td>
                         <td>Tanggal</td>
-                        <td>Remarks</td>
-                        <td><a href="<?= base_url().$dir."{$fileInside[$i]}"?>"target = "_blank"><?php echo "{$fileInside[$i]}"?></a></td>
+                        <td>
+                            <?php
+                                if ($fileInside[$i] == $dat['Nama_File'].".pdf"){
+                                    echo $dat['Keterangan'];
+                                }
+                                else{
+                                    echo " ";
+                                }
+                            ?>
+                        </td>
+                        <td><a href="<?= base_url().$dir."{$fileInside[$i]}"?>"target = "_blank">Buka</a></td>
                     </tr>
                 <?php endfor; ?>
             </tbody>
