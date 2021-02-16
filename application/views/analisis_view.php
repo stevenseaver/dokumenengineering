@@ -8,7 +8,6 @@
                 mkdir($dir, 0777, TRUE);
 
             $fileInside = scandir($dir);
-            foreach ($viewListAnalisis as $dat)
         ?>
 
         <a href="/dokumenengineering/index.php/page/analisis" type="button" class="btn btn-secondary" style="position:absolute; left:1430px; right:50; top:100px">Kembali</a>
@@ -30,14 +29,26 @@
                         <td><?php  
                             echo $fileInside[$i];
                         ?></td>
-                        <td>Tanggal</td>
+                        <td>
+                            <?php 
+                                foreach ($viewListAnalisis as $dat){
+                                    if ($fileInside[$i] == $dat['Nama_File'].".pdf"){
+                                        echo $dat['Tanggal'];
+                                    }
+                                    else{
+                                        echo " ";
+                                    }
+                                }
+                            ?></td>
                         <td>
                             <?php
-                                if ($fileInside[$i] == $dat['Nama_File'].".pdf"){
-                                    echo $dat['Keterangan'];
-                                }
-                                else{
-                                    echo " ";
+                                foreach ($viewListAnalisis as $dat){
+                                    if ($fileInside[$i] == $dat['Nama_File'].".pdf"){
+                                        echo $dat['Keterangan'];
+                                    }
+                                    else{
+                                        echo " ";
+                                    }
                                 }
                             ?>
                         </td>

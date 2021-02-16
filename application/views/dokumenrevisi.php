@@ -16,9 +16,9 @@
                     <tr>
                         <td><?php echo $s['Jenis Produk'] ?></td>
                         <td><?php echo $s['Nama Produk'] ?></td>
-                        <td><a href="<?= base_url()."Asset/Revisi/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Dokumen Produk'].".".$s['Format Dokumen']?>"><?php echo $s['Dokumen Produk'] ?></a></td>
+                        <td><a href="<?= base_url()."Asset/Revisi/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Dokumen Produk']."_".$s['Nama Produk'].".".$s['Format Dokumen']?>"><?php echo $s['Dokumen Produk'] ?></a></td>
                         <td><?php 
-                            $fileName = "Asset/Revisi/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Dokumen Produk'].".".$s['Format Dokumen'];
+                            $fileName = "Asset/Revisi/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Dokumen Produk']."_".$s['Nama Produk'].".".$s['Format Dokumen'];
                             if(file_exists($fileName) == true){
                                 echo "<div class='alert alert-primary' style='margin-bottom:0px; padding:0px; text-align: center'>OK</div>";
                             }

@@ -62,8 +62,6 @@
             
                 <br /><br />
                 <input id="submit" type="submit" value="Upload"/>
-
-                </form>
             </div>
         </div>
     </div>        

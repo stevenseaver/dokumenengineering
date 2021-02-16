@@ -6,6 +6,7 @@
                     <td>Jenis Produk</td>
                     <td>Nama Produk</td>
                     <td>Jenis Analisis</td>
+                    <td>Keterangan</td>
                 </tr>
             </thead>
             <tbody>
@@ -14,6 +15,20 @@
                         <td><?php echo $s['Jenis_Produk'] ?></td>
                         <td><?php echo $s['Nama_Produk'] ?></td>
                         <td><a href="/dokumenengineering/index.php/page/analisis_view/<?= $s['Id'] ?>"><?php echo $s['Jenis_Analisis'];?></a></td>
+                        <td>
+                            <?php
+                                $dir = "Asset/Analisis/{$s['Jenis_Produk']}/{$s['Nama_Produk']}/{$s['Jenis_Analisis']}/";
+                                if(!is_dir($dir)){
+                                    mkdir($dir, 0777, TRUE);
+                                    echo "Direktori Belum Ada";
+                                }
+                                else{
+                                    $fileInside = scandir($dir);
+                                    $len = (count($fileInside))-2;
+                                    echo "{$len}"." "."Dokumen";
+                                }
+                            ?>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

@@ -30,13 +30,14 @@ class Dokumen extends CI_Model {
         return $query->result_array();
     }
 
-    public function update_analisisview($select1, $select2, $select3, $keterangan, $file)
+    public function update_analisisview($select1, $select2, $select3, $keterangan, $tanggal, $file)
     {
         $query = $this->db->get_where('analisis', array('Jenis_Produk'=>$select1, 'Nama_Produk'=>$select2, 'Jenis_Analisis'=>$select3));
         $temp = $query->row_array();
         $data = array(
             'Id' => $temp['Id'],
             'Keterangan' => $keterangan,
+            'Tanggal' => $tanggal,
             'Nama_File' => $file
         );
 
