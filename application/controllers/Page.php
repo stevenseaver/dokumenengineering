@@ -172,7 +172,9 @@ class Page extends CI_Controller {
         $this->dokumen->update_analisisview($select1, $select2, $select3, $keterangan, $tanggal, $file);
     }
 
-    public function delete_analisis(){
-        echo hello;
+    public function hapus_analisis(){
+        // $id = $this->input->post('deleteButton');
+        // $this->dokumen->delete_analisisview($id);
+        echo 'hello';
     }
 }

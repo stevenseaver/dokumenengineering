@@ -43,4 +43,9 @@ class Dokumen extends CI_Model {
 
         $this->db->replace('analisisview', $data);
     }
+
+    public function delete_analisisview($id){
+        $this->db->where('Id', $id);
+        $this->db->delete($id);
+    }
 }
