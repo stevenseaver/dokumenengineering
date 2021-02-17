@@ -48,13 +48,15 @@ class Page extends CI_Controller {
                 $data['title'] = "Upload Revisi"; 
                 $data['viewData'] = $this->dokumen->load_data();
                 $data['viewDataAnalisis'] = $this->dokumen->load_data2();  
-                $this->load->view('header', $data);
+                $this->load->view('header',$data);
                 $this->load->view('upload',$error);
         }
         else
         {
                 $data = array('upload_data' => $this->upload->data());
-                $this->load->view('header');
+                $data['viewData'] = $this->dokumen->load_data();
+                $data['viewDataAnalisis'] = $this->dokumen->load_data2();  
+                $this->load->view('header',$data);
                 $this->load->view('upload_success', $data);
         }
     }
@@ -96,7 +98,9 @@ class Page extends CI_Controller {
         else
         {
                 $data = array('upload_data' => $this->upload->data());
-                $this->load->view('header');
+                $data['viewData'] = $this->dokumen->load_data();
+                $data['viewDataAnalisis'] = $this->dokumen->load_data2();  
+                $this->load->view('header',$data);
                 $this->load->view('uploadrevisi_success', $data);
         }
     }
@@ -160,8 +164,10 @@ class Page extends CI_Controller {
         }
         else
         {
+                $data['viewData'] = $this->dokumen->load_data();
+                $data['viewDataAnalisis'] = $this->dokumen->load_data2();  
                 $data = array('upload_data' => $this->upload->data());
-                $this->load->view('header');
+                $this->load->view('header',$data);
                 $this->load->view('uploadanalisis_success', $data);
         }
 
@@ -173,11 +179,15 @@ class Page extends CI_Controller {
     }
 
     public function hapus_analisis($nama_file){
-        $document_name = urldecode($nama_file);
-        $directory = $this->dokumen->get_directory($document_name);
-        // 
+        $document_name = urldecode($nama_file); //decode filename supoaya spasi ga jadi %20
+        $directory = $this->dokumen->get_directory($document_name);  //get directory based on file
         $dir = "Asset/Analisis/{$directory['Jenis_Produk']}/{$directory['Nama_Produk']}/{$directory['Jenis_Analisis']}/$document_name.pdf";
         unlink($dir);
         $this->db->delete('analisisview', array('Nama_File' => $document_name));
+
+        $data['viewData'] = $this->dokumen->load_data();
+        $data['viewDataAnalisis'] = $this->dokumen->load_data2();  
+        $this->load->view('header',$data);
+        $this->load->view('delete_success',$data);  
     }
 }

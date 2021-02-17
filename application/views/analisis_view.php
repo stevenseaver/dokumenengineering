@@ -23,41 +23,41 @@
             </thead>
             <tbody>
                 <?php
-                $len = count($fileInside);
-                for ($i = 2; $i < $len; $i++):
+                    $len = count($fileInside);
+                    for ($i = 2; $i < $len; $i++):
                 ?>
-                    <tr>
-                        <td><?php  
-                            echo $fileInside[$i];
+                <tr>
+                    <td><?php  
+                        echo $fileInside[$i];
+                    ?></td>
+                    <td>
+                        <?php 
+                            foreach ($viewListAnalisis as $dat){
+                                if ($fileInside[$i] == $dat['Nama_File'].".pdf"){
+                                    echo $dat['Tanggal'];
+                                }
+                                else{
+                                    echo " ";
+                                }
+                            }
                         ?></td>
-                        <td>
-                            <?php 
-                                foreach ($viewListAnalisis as $dat){
-                                    if ($fileInside[$i] == $dat['Nama_File'].".pdf"){
-                                        echo $dat['Tanggal'];
-                                    }
-                                    else{
-                                        echo " ";
-                                    }
+                    <td>
+                        <?php
+                            foreach ($viewListAnalisis as $dat){
+                                if ($fileInside[$i] == $dat['Nama_File'].".pdf"){
+                                    echo $dat['Keterangan'];
                                 }
-                            ?></td>
-                        <td>
-                            <?php
-                                foreach ($viewListAnalisis as $dat){
-                                    if ($fileInside[$i] == $dat['Nama_File'].".pdf"){
-                                        echo $dat['Keterangan'];
-                                    }
-                                    else{
-                                        echo " ";
-                                    }
+                                else{
+                                    echo " ";
                                 }
-                            ?>
-                        </td>
-                        <td>
-                            <a class="badge badge-success" href="<?= base_url().$dir."{$fileInside[$i]}"?>"target = "_blank">Buka</a>
-                            <a class="badge badge-danger" href="<?= base_url('index.php/page/hapus_analisis/').substr($fileInside[$i],0,strlen($fileInside[$i])-4) ?>" name="deleteButton" id="$dat['Id']">Hapus</a>
-                        </td>
-                    </tr>
+                            }
+                        ?>
+                    </td>
+                    <td>
+                        <a class="badge badge-success" href="<?= base_url().$dir."{$fileInside[$i]}"?>"target = "_blank">Buka</a>
+                        <a class="badge badge-danger" href="<?= base_url('index.php/page/hapus_analisis/').substr($fileInside[$i],0,strlen($fileInside[$i])-4)?>">Hapus</a>
+                    </td>
+                </tr>
                 <?php endfor; ?>
             </tbody>
         </table>
