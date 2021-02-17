@@ -172,9 +172,12 @@ class Page extends CI_Controller {
         $this->dokumen->update_analisisview($select1, $select2, $select3, $keterangan, $tanggal, $file);
     }
 
-    public function hapus_analisis(){
-        // $id = $this->input->post('deleteButton');
-        // $this->dokumen->delete_analisisview($id);
-        echo 'hello';
+    public function hapus_analisis($nama_file){
+        $document_name = urldecode($nama_file);
+        $directory = $this->dokumen->get_directory($document_name);
+        // 
+        $dir = "Asset/Analisis/{$directory['Jenis_Produk']}/{$directory['Nama_Produk']}/{$directory['Jenis_Analisis']}/$document_name.pdf";
+        unlink($dir);
+        $this->db->delete('analisisview', array('Nama_File' => $document_name));
     }
 }

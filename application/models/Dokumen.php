@@ -48,4 +48,15 @@ class Dokumen extends CI_Model {
         $this->db->where('Id', $id);
         $this->db->delete($id);
     }
+
+    public function get_directory($name)
+    {
+        $query = $this->db->get_where('analisisview', array('Nama_File' => $name));
+        $row = $query->row_array();
+
+        $query = $this->db->get_where('analisis', array('Id' => $row['Id']));
+        $result = $query->row_array();
+
+        return $result;
+    }
 }

@@ -22,9 +22,10 @@
                 </tr>
             </thead>
             <tbody>
-                <?php 
-                    $len = count($fileInside);
-                    for ($i = 2; $i < $len; $i++) : ?>
+                <?php
+                $len = count($fileInside);
+                for ($i = 2; $i < $len; $i++):
+                ?>
                     <tr>
                         <td><?php  
                             echo $fileInside[$i];
@@ -54,7 +55,7 @@
                         </td>
                         <td>
                             <a class="badge badge-success" href="<?= base_url().$dir."{$fileInside[$i]}"?>"target = "_blank">Buka</a>
-                            <a class="badge badge-danger" href="<?= base_url('index.php/page/hapus_analisis') ?>" name="deleteButton" id="$dat['Id']">Hapus</a>
+                            <a class="badge badge-danger" href="<?= base_url('index.php/page/hapus_analisis/').substr($fileInside[$i],0,strlen($fileInside[$i])-4) ?>" name="deleteButton" id="$dat['Id']">Hapus</a>
                         </td>
                     </tr>
                 <?php endfor; ?>
