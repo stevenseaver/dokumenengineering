@@ -59,4 +59,12 @@ class Dokumen extends CI_Model {
 
         return $result;
     }
+
+    public function update_dokumenrevisi($jenis_produk, $nama_produk, $jenis_dokumen, $status){
+        $temp_jenis = urldecode($jenis_produk);
+        $temp_nama = urldecode($nama_produk);
+        $temp_dokumen = urldecode($jenis_dokumen);
+
+        $query=$this->db->query("UPDATE `dokumenrevisi` SET `Status`='{$status}' WHERE `Jenis_Produk`='{$temp_jenis}' AND `Nama_Produk`='{$temp_nama}' AND `Dokumen_Produk`='{$temp_dokumen}';");
+    }
 }

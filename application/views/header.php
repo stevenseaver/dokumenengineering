@@ -41,7 +41,7 @@
               <a class="dropdown-item" href="/dokumenengineering/index.php/page/dokumenrevisi">Dokumen Revisi</a>
               <a class="dropdown-item" href="/dokumenengineering/index.php/page/uploadrevisi">Upload Revisi</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item disabled" href="/dokumenengineering/index.php/page/">To Be Added</a>
+              <a class="dropdown-item" href="/dokumenengineering/index.php/page/superview">Super</a>
             </div>
           </li>
         </ul>

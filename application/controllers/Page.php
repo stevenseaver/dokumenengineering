@@ -12,7 +12,6 @@ class Page extends CI_Controller {
 	public function main(){  //LOAD MAIN PAGE UNTUK VIEW DOKUMEN FIX YANG LIVE
         $data['title'] = "Home"; 
         $data['viewData'] = $this->dokumen->load_data();
-        $data['viewDataAnalisis'] = $this->dokumen->load_data2(); 
         $this->load->view('header', $data);
 		$this->load->view('main', $data);
     }
@@ -20,7 +19,6 @@ class Page extends CI_Controller {
     public function upload($error_msg = array('error'=>' ')){  //LOAD PAGE UPLOAD DOKUMEN FIX
         $data['title'] = "Upload Revisi"; 
         $data['viewData'] = $this->dokumen->load_data();
-        $data['viewDataAnalisis'] = $this->dokumen->load_data2();  
         $this->load->view('header', $data);
         $this->load->view('upload',$error_msg);
     }
@@ -47,15 +45,13 @@ class Page extends CI_Controller {
                 $error = array('error' => $this->upload->display_errors());
                 $data['title'] = "Upload Revisi"; 
                 $data['viewData'] = $this->dokumen->load_data();
-                $data['viewDataAnalisis'] = $this->dokumen->load_data2();  
                 $this->load->view('header',$data);
                 $this->load->view('upload',$error);
         }
         else
         {
                 $data = array('upload_data' => $this->upload->data());
-                $data['viewData'] = $this->dokumen->load_data();
-                $data['viewDataAnalisis'] = $this->dokumen->load_data2();  
+                $data['viewData'] = $this->dokumen->load_data();  
                 $this->load->view('header',$data);
                 $this->load->view('upload_success', $data);
         }
@@ -64,7 +60,6 @@ class Page extends CI_Controller {
     public function uploadrevisi($error_msg = array('error'=>' ')){  //UNTUK LOAD PAGE UPLOAD DOKUMEN REVISI
         $data['title'] = "Dokumen Revisi"; 
         $data['viewData'] = $this->dokumen->load_data();
-        $data['viewDataAnalisis'] = $this->dokumen->load_data2(); 
         $this->load->view('header', $data);
 		$this->load->view('uploadrevisi', $error_msg);
     }
@@ -88,21 +83,43 @@ class Page extends CI_Controller {
             
         if ( ! $this->upload->do_upload('userfile'))
         {
-                $error = array('error' => $this->upload->display_errors());
-                $data['title'] = "Upload Revisi"; 
-                $data['viewData'] = $this->dokumen->load_data();
-                $data['viewDataAnalisis'] = $this->dokumen->load_data2();  
-                $this->load->view('header', $data);
-                $this->load->view('uploadrevisi',$error);
+            $error = array('error' => $this->upload->display_errors());
+            $data['title'] = "Upload Revisi"; 
+            $data['viewData'] = $this->dokumen->load_data();
+            $this->load->view('header', $data);
+            $this->load->view('uploadrevisi',$error);
         }
         else
         {
-                $data = array('upload_data' => $this->upload->data());
-                $data['viewData'] = $this->dokumen->load_data();
-                $data['viewDataAnalisis'] = $this->dokumen->load_data2();  
-                $this->load->view('header',$data);
-                $this->load->view('uploadrevisi_success', $data);
+            $this->dokumen->update_dokumenrevisi($select1, $select2, $select3," ");
+            $data = array('upload_data' => $this->upload->data());
+            $data['viewData'] = $this->dokumen->load_data(); 
+            $this->load->view('header',$data);
+            $this->load->view('uploadrevisi_success', $data);
         }
+    }
+    //UNTUK LOAD PAGE LIST DOKUMEN YANG REVISI YANG SUDAH UPLOAD
+    public function dokumenrevisi(){  
+        $data['title'] = "Dokumen Revisi"; 
+        $data['viewData'] = $this->dokumen->load_datarevisi();
+        $this->load->view('header', $data);
+		$this->load->view('dokumenrevisi', $data);
+    }
+
+    //untuk load page super user
+    public function superview(){
+        $data['title'] = "View Revisi"; 
+        $data['viewData'] = $this->dokumen->load_datarevisi(); 
+        $this->load->view('header', $data);
+		$this->load->view('superview', $data);
+    }
+
+    public function accdatabase($select1, $select2, $select3, $status){
+        $this->dokumen->update_dokumenrevisi($select1, $select2, $select3, $status);
+        $data['title'] = "View Revisi"; 
+        $data['viewData'] = $this->dokumen->load_datarevisi(); 
+        $this->load->view('header', $data);
+		$this->load->view('superview', $data);
     }
 
     public function analisis(){   //UNTUK LOAD PAGE ANALISIS YANG ISINYA HOMEPAGE
@@ -111,23 +128,15 @@ class Page extends CI_Controller {
         $this->load->view('header', $data);
         $this->load->view('analisis',$data);  
     }
-
-    public function analisis_view($id){  //UNTUK LOAD PAGE ANALISIS YANG ISINYA LIST DOKUMEN ANALISIS YANG ADA PER DOKUMEN
+    //UNTUK LOAD PAGE ANALISIS YANG ISINYA LIST DOKUMEN ANALISIS YANG ADA PER DOKUMEN
+    public function analisis_view($id){  
         $data['title'] = "Daftar Analisis";
         $data['viewData'] = $this->dokumen->get_analisis_id($id);  
         $data['viewListAnalisis'] = $this->dokumen->load_analisisview();
         $this->load->view('header', $data);
         $this->load->view('analisis_view',$data);  
     }
-
-    public function dokumenrevisi(){  //UNTUK LOAD PAGE LIST DOKUMEN YANG REVISI YANG SUDAH UPLOAD
-        $data['title'] = "Dokumen Revisi"; 
-        $data['viewData'] = $this->dokumen->load_datarevisi();
-        $data['viewDataAnalisis'] = $this->dokumen->load_data2(); 
-        $this->load->view('header', $data);
-		$this->load->view('dokumenrevisi', $data);
-    }
-
+    //untuk upload dokumen analisis
     public function uploadanalisis($error_msg = array('error'=>' ')){  //UNTUK LOAD PAGE UPLOAD DOKUMEN REVISI
         $data['title'] = "Dokumen Revisi"; 
         $data['viewData'] = $this->dokumen->load_data();
@@ -135,7 +144,7 @@ class Page extends CI_Controller {
         $this->load->view('header', $data);
 		$this->load->view('uploadanalisis', $error_msg);
     }
-
+    //library upload dokumen analisis
     public function do_upload_analisis() { //UNTUK UPLOAD DOKUMEN ANALISIS {LIBRARY DR CI}
         $select1 = $this->input->post('select1');
         $select2 = $this->input->post('select2');
@@ -170,14 +179,14 @@ class Page extends CI_Controller {
                 $this->load->view('header',$data);
                 $this->load->view('uploadanalisis_success', $data);
         }
-
+        //tambah data ke database untuk analisis_view
         $keterangan = $this->input->post('keterangan');
         $tanggal    = date("d/m/Y");
         $file = $config['file_name'];
 
         $this->dokumen->update_analisisview($select1, $select2, $select3, $keterangan, $tanggal, $file);
     }
-
+    //untuk hapus file analisis
     public function hapus_analisis($nama_file){
         $document_name = urldecode($nama_file); //decode filename supoaya spasi ga jadi %20
         $directory = $this->dokumen->get_directory($document_name);  //get directory based on file
