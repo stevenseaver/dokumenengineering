@@ -10,7 +10,7 @@
             $fileInside = scandir($dir);
         ?>
 
-        <a href="/dokumenengineering/index.php/page/analisis" type="button" class="btn btn-secondary" style="position:absolute; left:1430px; right:50; top:100px">Kembali</a>
+        <a href="/dokumenengineering/index.php/page/analisis" type="button" class="btn btn-secondary" style="position:absolute; left:75%; right:18.2%; top:12%">Kembali</a>
         
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
