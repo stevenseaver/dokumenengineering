@@ -65,6 +65,10 @@ class Dokumen extends CI_Model {
         $temp_nama = urldecode($nama_produk);
         $temp_dokumen = urldecode($jenis_dokumen);
 
-        $query=$this->db->query("UPDATE `dokumenrevisi` SET `Status`='{$status}' WHERE `Jenis_Produk`='{$temp_jenis}' AND `Nama_Produk`='{$temp_nama}' AND `Dokumen_Produk`='{$temp_dokumen}';");
+        $this->db->set('Status', $status);
+        $this->db->where('Jenis_Produk', $temp_jenis);
+        $this->db->where('Nama_Produk', $temp_nama);
+        $this->db->where('Dokumen_Produk', $temp_dokumen);
+        $this->db->update('dokumenrevisi'); // gives UPDATE `mytable` SET `field` = 'field+1' WHERE `id` = 2
     }
 }

@@ -40,7 +40,7 @@ class Page extends CI_Controller {
         if(!is_dir($config['upload_path']))
             mkdir($config['upload_path'], 0777, TRUE);
             
-        if ( ! $this->upload->do_upload('userfile'))
+        if (!$this->upload->do_upload('userfile'))
         {
                 $error = array('error' => $this->upload->display_errors());
                 $data['title'] = "Upload Revisi"; 

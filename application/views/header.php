@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
-    <title>Engineering Document</title>
+    <title>Drawing Design Instruction</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -14,15 +14,18 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">
         <img src="/dokumenengineering/LogoElitech.jpeg" width=65 height=20></img>
-        Dokumen Engineering
+        Drawing Design Instruction
       </a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/dokumenengineering/index.php/page/main">Dokumen Kontrol<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/dokumenengineering/index.php/page/upload">Upload Dokumen Kontrol </a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dokumen Kontrol
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/dokumenengineering/index.php/page/main">Dokumen Kontrol Produk</a>
+              <a class="dropdown-item" href="/dokumenengineering/index.php/page/upload">Upload Dokumen Kontrol Produk</a>
+            </div>
           </li> 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -35,13 +38,13 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Revisi
+              Revisi Dokumen Produk
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="/dokumenengineering/index.php/page/dokumenrevisi">Dokumen Revisi</a>
               <a class="dropdown-item" href="/dokumenengineering/index.php/page/uploadrevisi">Upload Revisi</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/dokumenengineering/index.php/page/superview">Super</a>
+              <a class="dropdown-item" href="/dokumenengineering/index.php/page/superview">Superviser</a>
             </div>
           </li>
         </ul>
