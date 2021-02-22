@@ -40,6 +40,14 @@
                         <td>
                             <a class="badge badge-success" href="<?=base_url('index.php/page/accdatabase/').$s['Jenis_Produk']."/".$s['Nama_Produk']."/".$s['Dokumen_Produk']."/".$statusACC?>">ACC</a>
                             <a class="badge badge-danger" href="<?=base_url('index.php/page/accdatabase/').$s['Jenis_Produk']."/".$s['Nama_Produk']."/".$s['Dokumen_Produk']."/".$statusREVISI?>">Revisi</a> 
+                            <?php 
+                                if ($s['Status'] == "ACC"){ 
+                                    echo "<a class='badge badge-warning' href='#'>Pindah ke DC</a>";
+                                }
+                                else{
+                                    echo "<a class='badge badge-light disabled' href='#'>Pindah ke DC</a>";
+                                }
+                            ?>
                         </td>
                     </tr>
                 <?php endforeach;?>

@@ -16,7 +16,7 @@
                     <tr>
                         <td><?php echo $s['Jenis_Produk'] ?></td>
                         <td><?php echo $s['Nama_Produk'] ?></td>
-                        <td><a href="<?= base_url()."Asset/Revisi/".$s['Jenis_Produk']."/".$s['Nama_Produk']."/".$s['Dokumen_Produk']."_".$s['Nama_Produk'].".".$s['Format_Dokumen']?>"><?php echo $s['Dokumen_Produk'] ?></a></td>
+                        <td><?php echo $s['Dokumen_Produk'] ?></td>
                         <td><?php 
                             $fileName = "Asset/Revisi/".$s['Jenis_Produk']."/".$s['Nama_Produk']."/".$s['Dokumen_Produk']."_".$s['Nama_Produk'].".".$s['Format_Dokumen'];
                             if(file_exists($fileName) == true){
@@ -36,14 +36,7 @@
                             }
                         ?></td>
                         <td>
-                            <?php 
-                                if ($s['Status'] == "ACC"){ 
-                                    echo "<a class='badge badge-success' href='#'>Pindah ke DC</a>";
-                                }
-                                else{
-                                    echo "<a class='badge badge-danger' href='#'>Pindah ke DC</a>";
-                                }
-                            ?>
+                            <a class="badge badge-success" href="<?= base_url().$fileName?>" target = "_blank">Buka</a>
                         </td>
                     </tr>
                 <?php endforeach;?>

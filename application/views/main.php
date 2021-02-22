@@ -71,6 +71,7 @@
                     <td>Nama Produk</td>
                     <td>Dokumen Produk</td>
                     <td>Status</td>
+                    <td>Aksi</td>
                 </tr>
             </thead>
             <tbody>
@@ -78,7 +79,7 @@
                     <tr>
                         <td><?php echo $s['Jenis Produk'] ?></td>
                         <td><?php echo $s['Nama Produk'] ?></td>
-                        <td><a href="<?= base_url()."Asset/Live/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Dokumen Produk']."_".$s['Nama Produk'].".pdf"?>" target = "_blank"><?php echo $s['Dokumen Produk'] ?></a></td>
+                        <td><?php echo $s['Dokumen Produk'] ?></td>
                         <td><?php 
                             $fileName = "Asset/Live/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Dokumen Produk']."_".$s['Nama Produk'].".pdf";
                             if(file_exists($fileName) == true){
@@ -88,6 +89,9 @@
                                 echo "<div class='alert alert-danger' style='margin-bottom:0px; padding:0px; text-align: center'>Tidak Tersedia</div>";
                             }
                         ?></td>
+                        <td>
+                            <a class="badge badge-success" href="<?= base_url().$fileName?>" target = "_blank">Buka</a>
+                        </td>
                     </tr>
                 <?php endforeach;?>
             </tbody>

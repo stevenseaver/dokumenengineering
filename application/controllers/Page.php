@@ -197,6 +197,6 @@ class Page extends CI_Controller {
         $data['viewData'] = $this->dokumen->load_data();
         $data['viewDataAnalisis'] = $this->dokumen->load_data2();  
         $this->load->view('header',$data);
-        $this->load->view('delete_success',$data);  
+        $this->load->view('delete_success',$data);   
     }
 }
