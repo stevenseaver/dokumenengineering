@@ -49,12 +49,18 @@ class Dokumen extends CI_Model {
         $this->db->delete($id);
     }
 
-    public function get_directory($name)
-    {
+    public function get_directory($name){
         $query = $this->db->get_where('analisisview', array('Nama_File' => $name));
         $row = $query->row_array();
 
         $query = $this->db->get_where('analisis', array('Id' => $row['Id']));
+        $result = $query->row_array();
+
+        return $result;
+    }
+
+    public function get_directorydc($nama, $dokumen){
+        $query = $this->db->get_where('dokumen', array('Nama_Produk' => $nama, 'Dokumen_Produk' => $dokumen));
         $result = $query->row_array();
 
         return $result;

@@ -55,7 +55,8 @@
                     </td>
                     <td>
                         <a class="badge badge-success" href="<?= base_url().$dir."{$fileInside[$i]}"?>"target = "_blank">Buka</a>
-                        <a class="badge badge-danger" data-toggle="modal" data-target="#modalHapus" style="color:white" href="">Hapus</a>  
+                        <a href="<?= base_url('index.php/page/hapus_analisis/').substr($fileInside[$i],0,strlen($fileInside[$i])-4)?>" type="button" class="badge badge-danger">Hapus</a>
+                        <!-- <a class="badge badge-danger" data-toggle="modal" data-target="#modalHapus" style="color:white" href="">Hapus</a>  
                         <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -70,11 +71,11 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn" data-dismiss="modal">Batalkan</button>
-                                        <a href="<?= base_url('index.php/page/hapus_analisis/').substr($fileInside[$i],0,strlen($fileInside[$i])-4)?>" type="button" class="btn btn-danger">Hapus</a>
+                                        <a href="<?= //<base_url('index.php/page/hapus_analisis/').substr($fileInside[$i],0,strlen($fileInside[$i])-4)?>" type="button" class="btn btn-danger">Hapus</a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </td>
                 </tr>
                 <?php endfor; ?>

@@ -74,11 +74,11 @@
             <tbody>
                 <?php foreach ($viewData as $s) : ?>
                     <tr>
-                        <td><?php echo $s['Jenis Produk'] ?></td>
-                        <td><?php echo $s['Nama Produk'] ?></td>
-                        <td><?php echo $s['Dokumen Produk'] ?></td>
+                        <td><?php echo $s['Jenis_Produk'] ?></td>
+                        <td><?php echo $s['Nama_Produk'] ?></td>
+                        <td><?php echo $s['Dokumen_Produk'] ?></td>
                         <td><?php 
-                            $fileName = "Asset/Live/".$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Dokumen Produk']."_".$s['Nama Produk'].".pdf";
+                            $fileName = "Asset/Live/".$s['Jenis_Produk']."/".$s['Nama_Produk']."/".$s['Dokumen_Produk']."_".$s['Nama_Produk'].".pdf";
                             if(file_exists($fileName) == true){
                                 echo "<div class='alert alert-success' style='margin-bottom:0px; padding:0px; text-align: center'>OK</div>";
                             }
@@ -88,26 +88,10 @@
                         ?></td>
                         <td>
                             <a class="badge badge-success" href="<?= base_url().$fileName?>" target = "_blank">Buka</a>
-                            <a class="badge badge-danger" data-toggle="modal" data-target="#modalHapusDc" style="color:white" href="">Hapus</a>
-                            <div class="modal fade" id="modalHapusDc" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Awas!</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Anda akan menghapus file analisis. Lanjutkan?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn" data-dismiss="modal">Batalkan</button>
-                                            <a href="<?= base_url('index.php/page/hapus_dc/').$s['Jenis Produk']."/".$s['Nama Produk']."/".$s['Dokumen Produk']?>" class="btn btn-danger">Hapus</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>  
+                            <?php 
+                                $temp = base_url('index.php/page/hapus_dc/').$s['Jenis_Produk']."/".$s['Nama_Produk']."/".$s['Dokumen_Produk']; 
+                            ?>
+                            <a class="badge badge-danger" href="<?=urldecode($temp)?>">Hapus</a>
                         </td>
                     </tr>
                 <?php endforeach;?>

@@ -201,24 +201,19 @@ class Page extends CI_Controller {
     }
 
     public function hapus_dc($jenis, $nama, $dokumen){
-        $dir = urldecode("Asset/Live/{$jenis}/{$nama}/{$dokumen}_{$nama}.pdf");
-        echo $dir;
-        //unlink($nama_file);
-        // $this->db->delete('analisisview', array('Nama_File' => $document_name));
+        $prod_type = urldecode($jenis);
+        $prod_name = urldecode($nama);
+        $doc_type = urldecode($dokumen);
+        $dir = "Asset/Live/{$prod_type}/{$prod_name}/{$doc_type}_{$prod_name}.pdf";
+        unlink($dir);
 
-        // $data['viewData'] = $this->dokumen->load_data();  
-        // $this->load->view('header',$data);
-        // $this->load->view('deletedc_success',$data);   
+        $data['viewData'] = $this->dokumen->load_data();  
+        $this->load->view('header',$data);
+        $this->load->view('deletedc_success',$data);   
     }
 
     public function hapus_revisi($jenis, $nama, $dokumen,$format){
-        $dir = urldecode("Asset/Live/{$jenis}/{$nama}/{$dokumen}_{$nama}.{$format}");
-        echo $dir;
-        //unlink($nama_file);
-        // $this->db->delete('analisisview', array('Nama_File' => $document_name));
-
-        // $data['viewData'] = $this->dokumen->load_data();  
-        // $this->load->view('header',$data);
-        // $this->load->view('deletedc_success',$data);   
+        $dir = urldecode("Asset/Revisi/{$jenis}/{$nama}/{$dokumen}_{$nama}.{$format}");
+        echo $dir; 
     }
 }
