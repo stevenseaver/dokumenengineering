@@ -199,4 +199,15 @@ class Page extends CI_Controller {
         $this->load->view('header',$data);
         $this->load->view('delete_success',$data);   
     }
+
+    public function hapus_dc($jenis, $nama, $dokumen){
+        $dir = urldecode("Asset/Live/{$jenis}/{$nama}/{$dokumen}_{$nama}.pdf");
+        echo $dir;
+        //unlink($nama_file);
+        // $this->db->delete('analisisview', array('Nama_File' => $document_name));
+
+        // $data['viewData'] = $this->dokumen->load_data();  
+        // $this->load->view('header',$data);
+        // $this->load->view('deletedc_success',$data);   
+    }
 }
