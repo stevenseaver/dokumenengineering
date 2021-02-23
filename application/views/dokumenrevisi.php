@@ -37,6 +37,26 @@
                         ?></td>
                         <td>
                             <a class="badge badge-success" href="<?= base_url().$fileName?>" target = "_blank">Buka</a>
+                            <a class="badge badge-danger" data-toggle="modal" data-target="#modalHapusDc" style="color:white" href="">Hapus</a>
+                            <div class="modal fade" id="modalHapusDc" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Awas!</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Anda akan menghapus file analisis. Lanjutkan?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn" data-dismiss="modal">Batalkan</button>
+                                            <a href="<?= base_url('index.php/page/hapus_revisi/').$s['Jenis_Produk']."/".$s['Nama_Produk']."/".$s['Dokumen_Produk']."/".$s['Format_Dokumen']?>" class="btn btn-danger">Hapus</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
                         </td>
                     </tr>
                 <?php endforeach;?>
