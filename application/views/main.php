@@ -60,7 +60,6 @@
                 </div>
             </div>
         </div> -->
-        <br>
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
@@ -87,7 +86,7 @@
                             }
                         ?></td>
                         <td>
-                            <a class="badge badge-success" href="<?= base_url().$fileName?>" target = "_blank">Buka</a>
+                            <a class="badge badge-success disabled" href="<?= base_url().$fileName?>" target = "_blank">Buka</a>
                             <?php 
                                 $temp = base_url('index.php/page/hapus_dc/').$s['Jenis_Produk']."/".$s['Nama_Produk']."/".$s['Dokumen_Produk']; 
                             ?>

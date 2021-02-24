@@ -201,10 +201,7 @@ class Page extends CI_Controller {
     }
 
     public function hapus_dc($jenis, $nama, $dokumen){
-        $prod_type = urldecode($jenis);
-        $prod_name = urldecode($nama);
-        $doc_type = urldecode($dokumen);
-        $dir = "Asset/Live/{$prod_type}/{$prod_name}/{$doc_type}_{$prod_name}.pdf";
+        $dir = urldecode("Asset/Live/{$jenis}/{$nama}/{$dokumen}_{$nama}.pdf");
         unlink($dir);
 
         $data['viewData'] = $this->dokumen->load_data();  
@@ -212,8 +209,12 @@ class Page extends CI_Controller {
         $this->load->view('deletedc_success',$data);   
     }
 
-    public function hapus_revisi($jenis, $nama, $dokumen,$format){
+    public function hapus_revisi($jenis, $nama, $dokumen, $format){
         $dir = urldecode("Asset/Revisi/{$jenis}/{$nama}/{$dokumen}_{$nama}.{$format}");
-        echo $dir; 
+        unlink($dir);
+        
+        $data['viewData'] = $this->dokumen->load_data();  
+        $this->load->view('header',$data);
+        $this->load->view('deleterevisi_success',$data);  
     }
 }
