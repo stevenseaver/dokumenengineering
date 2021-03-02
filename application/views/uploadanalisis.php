@@ -13,8 +13,8 @@
                         <?php 
                             $before = '';
                             foreach($viewData as $data){
-                                if ($before != $data['Jenis Produk']){
-                                    $temp = $data['Jenis Produk'];
+                                if ($before != $data['Jenis_Produk']){
+                                    $temp = $data['Jenis_Produk'];
                                     echo "<option value='{$temp}'>".$temp."</option>";
                                     $before = $temp;
                                 }
@@ -29,8 +29,8 @@
                         <?php 
                             $before = '';
                             foreach($viewData as $data){
-                                $temp1 = $data['Jenis Produk'];
-                                $temp2 = $data['Nama Produk'];
+                                $temp1 = $data['Jenis_Produk'];
+                                $temp2 = $data['Nama_Produk'];
                                 if ($before != $temp2){
                                     echo "<option value='{$temp2}' class='{$temp1}'>".$temp2."</option>"; 
                                     $before = $temp2;
