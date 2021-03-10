@@ -42,12 +42,15 @@
                             <a class="badge badge-danger" href="<?=base_url('index.php/page/accdatabase/').$s['Jenis_Produk']."/".$s['Nama_Produk']."/".$s['Dokumen_Produk']."/".$statusREVISI?>">Revisi</a> 
                             <?php 
                                 if ($s['Status'] == "ACC"){ 
-                                    echo "<a class='badge badge-warning' href='#'>Pindah ke DC</a>";
+                                    $styleClass = "badge badge-warning";
+                                    $status = TRUE;
                                 }
                                 else{
-                                    echo "<a class='badge badge-light disabled' href='#'>Pindah ke DC</a>";
+                                    $styleClass = "badge badge-light";
+                                    $status = FALSE;
                                 }
                             ?>
+                            <a class="<?php echo $styleClass?>" href="<?=base_url('index.php/page/moveDC/').$s['Jenis_Produk']."/".$s['Nama_Produk']."/".$s['Dokumen_Produk']."/".$s['Format_Dokumen']."/".$status?>">Pindah ke DC</a>
                         </td>
                     </tr>
                 <?php endforeach;?>

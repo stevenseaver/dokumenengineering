@@ -28,7 +28,7 @@ class Page extends CI_Controller {
         $select2 = $this->input->post('select2');
         $select3 = $this->input->post('select3');
 
-        $config['allowed_types']  = 'pdf|mp4|jpg|png';
+        $config['allowed_types']  = 'pdf|mp4|jpg|png';  //ganti disini jika ga jadi pdf saja!!!
         $config['max_size']       = 10000;
         $config['upload_path']    = "./Asset/Live/{$select1}/{$select2}/";
         $config['file_name']  = "{$select3}"."_"."{$select2}";
@@ -201,7 +201,7 @@ class Page extends CI_Controller {
     }
 
     public function hapus_dc($jenis, $nama, $dokumen){
-        $dir = urldecode("Asset/Live/{$jenis}/{$nama}/{$dokumen}_{$nama}.pdf");
+        $dir = urldecode("Asset/Live/{$jenis}/{$nama}/{$dokumen}_{$nama}.pdf");  //ganti disini kalo format ga cuma pdf
         unlink($dir);
 
         $data['viewData'] = $this->dokumen->load_data();  
@@ -210,11 +210,22 @@ class Page extends CI_Controller {
     }
 
     public function hapus_revisi($jenis, $nama, $dokumen, $format){
-        $dir = urldecode("Asset/Revisi/{$jenis}/{$nama}/{$dokumen}_{$nama}.{$format}");
+        $dir = urldecode("Asset/Revisi/{$jenis}/{$nama}/{$dokumen}_{$nama}.{$format}");  
         unlink($dir);
         
         $data['viewData'] = $this->dokumen->load_data();  
         $this->load->view('header',$data);
         $this->load->view('deleterevisi_success',$data);  
+    }
+
+    public function moveDC($jenis, $nama, $dokumen, $format, $status){
+        $fileFROM = urldecode("Asset/Revisi/{$jenis}/{$nama}/{$dokumen}_{$nama}.{$format}");
+        $fileTO = urldecode("Asset/Live/{$jenis}/{$nama}/{$dokumen}_{$nama}.{$format}");
+        copy("$fileFROM","$fileTO"); 
+
+        $data['title'] = "View Revisi"; 
+        $data['viewData'] = $this->dokumen->load_datarevisi(); 
+        $this->load->view('header', $data);
+		$this->load->view('superview', $data);
     }
 }

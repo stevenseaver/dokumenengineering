@@ -6,7 +6,7 @@ class Dokumen extends CI_Model {
     }
 
     public function load_data(){
-        $query = $this->db->get('dokumen');
+        $query = $this->db->get('dokumen');  //ganti jadi dokumenrevisi kalo nanti ga jadi pdf saja
         return $query->result_array();
     }
 

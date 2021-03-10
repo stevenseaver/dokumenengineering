@@ -77,7 +77,7 @@
                         <td><?php echo $s['Nama_Produk'] ?></td>
                         <td><?php echo $s['Dokumen_Produk'] ?></td>
                         <td><?php 
-                            $fileName = "Asset/Live/".$s['Jenis_Produk']."/".$s['Nama_Produk']."/".$s['Dokumen_Produk']."_".$s['Nama_Produk'].".pdf";
+                            $fileName = "Asset/Live/".$s['Jenis_Produk']."/".$s['Nama_Produk']."/".$s['Dokumen_Produk']."_".$s['Nama_Produk'].".pdf"; //.pdf ganti $format
                             if(file_exists($fileName) == true){
                                 echo "<div class='alert alert-success' style='margin-bottom:0px; padding:0px; text-align: center'>OK</div>";
                             }
@@ -88,7 +88,7 @@
                         <td>
                             <a class="badge badge-success disabled" href="<?= base_url().$fileName?>" target = "_blank">Buka</a>
                             <?php 
-                                $temp = base_url('index.php/page/hapus_dc/').$s['Jenis_Produk']."/".$s['Nama_Produk']."/".$s['Dokumen_Produk']; 
+                                $temp = base_url('index.php/page/hapus_dc/').$s['Jenis_Produk']."/".$s['Nama_Produk']."/".$s['Dokumen_Produk']; //.pdf $format
                             ?>
                             <a class="badge badge-danger" href="<?=urldecode($temp)?>">Hapus</a>
                         </td>

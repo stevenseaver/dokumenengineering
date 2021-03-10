@@ -49,11 +49,11 @@
           </li>
         </ul>
       </div>
-      <form class="form-inline my-2 my-lg-0">
+      <!-- <form class="form-inline my-2 my-lg-0">
           <div>
             <a class="btn btn-outline-primary my-2 my-sm-0" href="/dokumenengineering/index.php/page/">Login</a> 
           </div>
-      </form>
+      </form> -->
     
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
