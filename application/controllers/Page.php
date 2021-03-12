@@ -231,7 +231,7 @@ class Page extends CI_Controller {
 
     public function viewTambahProduk(){
         $data['title'] = "Tambah Produk"; 
-        $data['viewData'] = $this->dokumen->load_datarevisi();
+        $data['viewData'] = $this->dokumen->load_data();
         $this->load->view('header', $data);
 		$this->load->view('addproduct', $data);
     }
@@ -239,7 +239,7 @@ class Page extends CI_Controller {
     public function tambahProduk(){
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('namaProduk', 'Nama Produk', 'required');
+        $this->form_validation->set_rules('namaProduk', 'nama produk', 'required');
 
         $jenis = $this->input->post('select1');
         $jenisMan = $this->input->post('select1man');
@@ -256,7 +256,7 @@ class Page extends CI_Controller {
         else
         {
             if((int) $stateCheck == TRUE){
-                $this->form_validation->set_rules('select1man', 'Isi Manual', 'required');
+                $this->form_validation->set_rules('select1man', 'isi manual', 'required');
                 if ($this->form_validation->run() == FALSE)
                 {
                     $data['title'] = "Tambah Produk"; 

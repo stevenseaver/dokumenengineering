@@ -81,7 +81,7 @@ class Dokumen extends CI_Model {
     public function update_produk($jenis_produk, $nama_produk){
         $temp_jenis = urldecode($jenis_produk);
         $temp_nama = urldecode($nama_produk);
-
+        //tambah database dokumen
         $data = array( //jangan lupa tambah format nanti kalau udah fix
             array(
                 'Jenis_Produk' => $temp_jenis,
@@ -179,7 +179,31 @@ class Dokumen extends CI_Model {
                 'Dokumen_Produk' => 'Video SOP' 
             )
         );
-
         $this->db->insert_batch('dokumen', $data);
+
+        //tambah database analisa
+        $dataAnalisis = array(
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Jenis_Analisis' => 'Analisis Standar'
+            ),
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Jenis_Analisis' => 'Analisis Breakdown'
+            ),
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Jenis_Analisis' => 'Analisis Kerusakan'
+            ),
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Jenis_Analisis' => 'Analisis Pengujian' 
+            )
+        );
+        $this->db->insert_batch('analisis', $dataAnalisis);
     }
 }
