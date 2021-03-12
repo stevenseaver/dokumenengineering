@@ -9,6 +9,25 @@ class Page extends CI_Controller {
         $this->load->helper(array('form', 'url'));
     }
 
+    public function login(){  //LOAD MAIN PAGE UNTUK VIEW DOKUMEN FIX YANG LIVE
+        $this->load->view('login');
+    }
+
+    public function loginProcess(){
+        $username = $this->input->post('inputEmail');
+        $password = $this->input->post('inputPassword');
+    
+        if ($username = 'admin@admin' && $password = 'admin'){
+            $data['title'] = "Home"; 
+            $data['viewData'] = $this->dokumen->load_data();
+            $this->load->view('header', $data);
+            $this->load->view('main', $data);
+        }
+        else{
+            $this->load->view('login'); 
+        }
+    }
+
 	public function main(){  //LOAD MAIN PAGE UNTUK VIEW DOKUMEN FIX YANG LIVE
         $data['title'] = "Home"; 
         $data['viewData'] = $this->dokumen->load_data();

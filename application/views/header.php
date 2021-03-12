@@ -12,7 +12,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/dokumenengineering/index.php/page/main">
         <img src="/dokumenengineering/LogoElitech.jpeg" width=65 height=20></img>
         Drawing Design Instruction
       </a>
@@ -52,11 +52,11 @@
           </li>
         </ul>
       </div>
-      <!-- <form class="form-inline my-2 my-lg-0">
+      <form class="form-inline my-2 my-lg-0">
           <div>
-            <a class="btn btn-outline-primary my-2 my-sm-0" href="/dokumenengineering/index.php/page/">Login</a> 
+            <a class="btn btn-outline-danger my-2 my-sm-0" href="/dokumenengineering/index.php/page/login">Logout</a> 
           </div>
-      </form> -->
+      </form>
     
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
