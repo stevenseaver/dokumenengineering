@@ -47,6 +47,9 @@
               <a class="dropdown-item" href="/dokumenengineering/index.php/page/superview">Superviser</a>
             </div>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/dokumenengineering/index.php/page/viewTambahProduk">Tambah Produk</a>
+          </li>
         </ul>
       </div>
       <!-- <form class="form-inline my-2 my-lg-0">

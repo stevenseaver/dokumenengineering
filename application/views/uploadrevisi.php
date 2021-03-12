@@ -61,7 +61,7 @@
                 <input type="file" name="userfile" size="20" />
             
                 <br /><br />
-                <input id="submit" type="submit" value="Upload"/>
+                <input class="btn btn-primary" id="submit" type="submit" value="Upload"/>
             </div>
         </div>
     </div>        

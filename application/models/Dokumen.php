@@ -77,4 +77,109 @@ class Dokumen extends CI_Model {
         $this->db->where('Dokumen_Produk', $temp_dokumen);
         $this->db->update('dokumenrevisi'); // gives UPDATE `mytable` SET `field` = 'field+1' WHERE `id` = 2
     }
+
+    public function update_produk($jenis_produk, $nama_produk){
+        $temp_jenis = urldecode($jenis_produk);
+        $temp_nama = urldecode($nama_produk);
+
+        $data = array( //jangan lupa tambah format nanti kalau udah fix
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Dokumen_Produk' => 'SOP'
+            ),
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Dokumen_Produk' => 'Packing List'
+            ),
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Dokumen_Produk' => 'Manual Book Inggris'
+            ),
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Dokumen_Produk' => 'Manual Book Indonesia'
+            ),
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Dokumen_Produk' => 'LKP'
+            ),
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Dokumen_Produk' => 'IK BOM'
+            ),
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Dokumen_Produk' => 'IK Alat Kerja'
+            ),
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Dokumen_Produk' => 'IK Pengemasan'
+            ),
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Dokumen_Produk' => 'IK Perakitan'
+            ),
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Dokumen_Produk' => 'IK Pengujian'
+            ),
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Dokumen_Produk' => 'IK Perbaikan'
+            ),
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Dokumen_Produk' => 'Metode Kerja'
+            ),
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Dokumen_Produk' => 'Desain Brosur'
+            ),
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Dokumen_Produk' => 'Desain Kemasan'
+            ),
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Dokumen_Produk' => 'Desain Produk'
+            ),
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Dokumen_Produk' => 'Dokumen Standar'
+            ),
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Dokumen_Produk' => 'AKD'
+            ),
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Dokumen_Produk' => 'PPT'
+            ),
+            array(
+                'Jenis_Produk' => $temp_jenis,
+                'Nama_Produk' => $temp_nama,
+                'Dokumen_Produk' => 'Video SOP' 
+            )
+        );
+
+        $this->db->insert_batch('dokumen', $data);
+    }
 }

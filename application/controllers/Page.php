@@ -59,7 +59,7 @@ class Page extends CI_Controller {
 
     public function uploadrevisi($error_msg = array('error'=>' ')){  //UNTUK LOAD PAGE UPLOAD DOKUMEN REVISI
         $data['title'] = "Dokumen Revisi"; 
-        $data['viewData'] = $this->dokumen->load_data();
+        $data['viewData'] = $this->dokumen->load_datarevisi();
         $this->load->view('header', $data);
 		$this->load->view('uploadrevisi', $error_msg);
     }
@@ -161,8 +161,8 @@ class Page extends CI_Controller {
 
         if(!is_dir($config['upload_path']))
             mkdir($config['upload_path'], 0777, TRUE);
-            
-        if ( ! $this->upload->do_upload('userfile'))
+        
+        if (!$this->upload->do_upload('userfile'))
         {
                 $error = array('error' => $this->upload->display_errors());
                 $data['title'] = "Upload Revisi"; 
@@ -227,5 +227,60 @@ class Page extends CI_Controller {
         $data['viewData'] = $this->dokumen->load_datarevisi(); 
         $this->load->view('header', $data);
 		$this->load->view('superview', $data);
+    }
+
+    public function viewTambahProduk(){
+        $data['title'] = "Tambah Produk"; 
+        $data['viewData'] = $this->dokumen->load_datarevisi();
+        $this->load->view('header', $data);
+		$this->load->view('addproduct', $data);
+    }
+
+    public function tambahProduk(){
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('namaProduk', 'Nama Produk', 'required');
+
+        $jenis = $this->input->post('select1');
+        $jenisMan = $this->input->post('select1man');
+        $nama = $this->input->post('namaProduk');
+        $stateCheck = $this->input->post('checkbox');
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            $data['title'] = "Tambah Produk"; 
+            $data['viewData'] = $this->dokumen->load_datarevisi();
+            $this->load->view('header', $data);
+            $this->load->view('addproduct', $data);
+        }
+        else
+        {
+            if((int) $stateCheck == TRUE){
+                $this->form_validation->set_rules('select1man', 'Isi Manual', 'required');
+                if ($this->form_validation->run() == FALSE)
+                {
+                    $data['title'] = "Tambah Produk"; 
+                    $data['viewData'] = $this->dokumen->load_datarevisi();
+                    $this->load->view('header', $data);
+                    $this->load->view('addproduct', $data);
+                }
+                else{
+                    $this->dokumen->update_produk($jenisMan, $nama);
+                    $data['title'] = "Tambah Produk"; 
+                    $data['viewData'] = $this->dokumen->load_datarevisi();
+                    $this->load->view('header', $data);
+                    echo "<div class='alert alert-success' role='alert'>Penambahan Produk Berhasil!</div>";
+                    $this->load->view('addproduct', $data);
+                }
+            }
+            else{
+                $this->dokumen->update_produk($jenis, $nama);
+                $data['title'] = "Tambah Produk"; 
+                $data['viewData'] = $this->dokumen->load_datarevisi();
+                $this->load->view('header', $data);
+                echo "<div class='alert alert-success' role='alert'>Penambahan Produk Berhasil!</div>";
+                $this->load->view('addproduct', $data);
+            }
+        }
     }
 }
